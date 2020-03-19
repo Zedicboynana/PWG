@@ -1,0 +1,263 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+   font-family: 'Russo One', sans-serif;
+}
+
+@import './options';
+@import './game';
+
+@mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+$primaryColor: #ca03e0;
+$secondaryColor: #e00c41;
+$r: rebeccapurple;
+$bg: linear-gradient(120deg, $primaryColor, $secondaryColor, $r);
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
+    background: $bg;
+    background-size: 300%;
+    animation: bg 6s infinite alternate;
+    min-height: fit-content;
+}
+
+@keyframes bg {
+    0% {
+        background-position: right;
+    }
+
+    50% {
+        background-position: top;
+    }
+
+    75% {
+        background-position: bottom;
+    }
+
+
+    100% {
+        background-position: left;
+    }
+
+}
+
+
+@keyframes splash-small {
+    0% {
+        background: white;
+        color: #ca03e0;
+        border-radius: 1px;
+        opacity: .1;
+    }
+
+    50% {
+        background: white;
+        color: #ca03e0;
+        border-radius: 3px;
+        opacity: .4;
+    }
+
+    75% {
+       background: white;
+       border-radius: 4px;
+       color: #ca03e0;
+        opacity: .7;
+    }
+
+
+    100% {
+         background: white;
+         color: #ca03e0;
+         border-radius: 5px;
+        opacity: 1;
+
+    }
+
+}
+
+
+//splash screen
+.splash-screen {
+    width: 100%;
+    height: 100vh;
+    @include center();
+    display: flex;
+
+    .wrap {
+        width: 400px;
+        height: 400px;
+        @include center();
+        flex-direction: column;
+    }
+}
+
+.wrap .welcome {
+    width: 60%;
+    height: 55%;
+    @include center();
+    flex-direction: column;
+
+    p {
+        font-weight: bold;
+        padding: .6rem;
+        background-color: transparent;
+        border-radius: 8px;
+        margin: .3rem;
+        color: white;
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 6rem;
+        line-height: 0.88;
+        margin: .4rem;
+        color: white;
+        transition: 0.2s ease-in-out;
+        padding: .5rem;
+    }
+
+    small {
+        padding: .5rem;
+        animation: splash-small 5s infinite alternate;
+        font-weight: bold;
+    }
+}
+
+
+.wrap .mini-option {
+    width: 100%;
+    height: 45%;
+    @include center();
+    flex-direction: column;
+    margin-top: 3em;
+
+    div {
+        width: 240px;
+        height: 56px;
+        margin-bottom: .4rem;
+        cursor: pointer;
+        @include center();
+
+        button {
+            width: 94%;
+            height: 86%;
+            font-weight: bold;
+            background-color: rebeccapurple;
+            font-size: .8rem;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            border: 1px solid #420149;
+            border-radius: 8px;
+            transition: 0.2s ease-in-out;
+            padding-left: 8px;
+            padding-right: 8px;
+
+            &:hover {
+                 box-shadow: 0px 0px 5px #400047;
+            }
+        }
+    }
+
+    span {
+        margin-top: 7rem;
+        color: lightblue;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .wrap .welcome {
+        h1 {
+            padding: .2rem;
+        }
+    }
+
+    .wrap .mini-option {
+
+        div {
+
+            button {
+                height: 84%;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 425px) {
+    .wrap .welcome {
+        p {
+            margin-bottom: 0rem;
+        }
+        h1 {
+            font-size: 3.2rem;
+            padding: .4rem;
+            margin-bottom: 0rem;
+        }
+    }
+
+    .wrap .mini-option {
+
+        div {
+
+            button {
+                width: 88%;
+                height: 80%;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .wrap .welcome {
+        h1 {
+            font-size: 3.1rem;
+            padding: .4rem;
+        }
+    }
+
+    .wrap .mini-option {
+
+        div {
+
+            button {
+                width: 86%;
+                height: 80%;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .wrap .welcome {
+        h1 {
+            font-size: 2.9rem;
+        }
+    }
+
+    .wrap .mini-option {
+
+        div {
+
+            button {
+                width: 80%;
+                height: 80%;
+            }
+        }
+    }
+
+}
